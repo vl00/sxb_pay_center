@@ -1,0 +1,27 @@
+﻿using iSchool.FinanceCenter.Domain.Entities;
+using iSchool.FinanceCenter.Domain.Enum;
+using MediatR;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+
+namespace iSchool.FinanceCenter.Appliaction.Service.UserBankCardMgr
+{
+    /// <summary>
+    /// 选择默认使用的银行卡
+    /// </summary>
+    public class SelectDefaultUseBankCardCommand : IRequest<bool>
+    {
+        /// <summary>
+        /// 用户ID
+        /// </summary>
+        public Guid UserId { get; set; }
+        /// <summary>
+        /// 银行卡号
+        /// </summary>
+        public string BankCardNo { get; set; }
+
+
+    }
+}

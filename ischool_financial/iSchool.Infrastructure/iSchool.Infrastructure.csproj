@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="5.2.0" />
+    <!--<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />-->
+    <PackageReference Include="iSchool.Authorization" Version="1.0.5.1" />
+    <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
+    <PackageReference Include="EnyimMemcachedCore" Version="2.4.3" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="NPinyin.Core" Version="3.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />    
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.7.1" />
+    <PackageReference Include="IdentityModel" Version="4.3.1" />
+    <PackageReference Include="CSRedisCore" Version="3.6.5" />
+    <PackageReference Include="RabbitMQ.Client" Version="5.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\iSchool.Domain.Repository.Interfaces\iSchool.Domain.Repository.Interfaces.csproj" />
+    <ProjectReference Include="..\iSchool.Domain\iSchool.Domain.csproj" />
+    <ProjectReference Include="..\iSchool.FinanceCenter.Domain\iSchool.FinanceCenter.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

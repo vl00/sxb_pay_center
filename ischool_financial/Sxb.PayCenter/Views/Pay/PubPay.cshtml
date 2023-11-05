@@ -1,0 +1,87 @@
+﻿@model WeChatPayPubPayV3ViewModel
+@{
+    ViewData["Title"] = "公众号支付-JSAPI下单";
+}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+
+        <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+    </ol>
+</nav>
+<br />
+<div class="card">
+    <div class="card-body">
+        <form asp-controller="payment" asp-action="weixin/jsapi">
+            <div asp-validation-summary="All" class="text-danger"></div>
+       
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <input type="text" class="form-control" asp-for="Description" value="微信公众号支付测试">
+            </div>
+            <div class="form-group">
+                <label asp-for="Total"></label>
+                <input type="text" class="form-control" asp-for="Total" value="1">
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="OpenId"></label>
+                <input type="text" class="form-control" asp-for="OpenId">
+            </div>
+            <button type="submit" class="btn btn-primary">提交请求</button>
+
+        </form>
+        <hr />
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label>Response:</label>
+                <textarea class="form-control" rows="10">@ViewData["response"]</textarea>
+            </div>
+            <div class="form-group">
+                <label>Parameter:</label>
+                <textarea class="form-control" rows="3">@ViewData["parameter"]</textarea>
+            </div>
+
+        </form>
+    </div>
+</div>
+<script>
+    function onBridgeReady() {
+        var json = "@ViewData["parameter"]";
+var d = document.createElement('div');
+d.innerHTML = json;
+var json = d.innerText || d.textContent
+var s = JSON.parse(json);
+
+        console.log(s);
+        WeixinJSBridge.invoke('getBrandWCPayRequest', {
+            "appId":s.appId,
+            //公众号名称，由商户传入
+            "timeStamp":s.timeStamp,
+            //时间戳，自1970年以来的秒数
+            "nonceStr":s.nonceStr,
+            //随机串
+            "package": s.package,
+            "signType": "RSA",
+            //微信签名方式：
+            "paySign":s.paySign //微信签名
+        },
+            function (res) {
+                if (res.err_msg == "get_brand_wcpay_request:ok") {
+                    // 使用以上方式判断前端返回,微信团队郑重提示：
+                    //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+                }
+            });
+    }
+    if (typeof WeixinJSBridge == "undefined") {
+        if (document.addEventListener) {
+            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+        } else if (document.attachEvent) {
+            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+        }
+    } else {
+        onBridgeReady();
+    }
+
+</script>
+

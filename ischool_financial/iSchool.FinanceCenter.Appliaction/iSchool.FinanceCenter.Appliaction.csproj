@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>obj\Debug\netcoreapp3.1\iSchool.FinanceCenter.Appliaction.xml</DocumentationFile>
+    <OutputPath></OutputPath>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Service\PayCenter\**" />
+    <Compile Remove="Service\WechatPay\**" />
+    <EmbeddedResource Remove="Service\PayCenter\**" />
+    <EmbeddedResource Remove="Service\WechatPay\**" />
+    <None Remove="Service\PayCenter\**" />
+    <None Remove="Service\WechatPay\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+    <PackageReference Include="NLog" Version="4.7.6" />
+    <PackageReference Include="NPOIHelper" Version="2.0.2" />
+    <PackageReference Include="ProductManagement.Tool.HttpRequest" Version="1.0.1" />
+    <PackageReference Include="Sxb.GenerateNo" Version="1.0.8" />
+    <PackageReference Include="WeChatSDK" Version="1.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\iSchool.FinanceCenter.Domain\iSchool.FinanceCenter.Domain.csproj" />
+    <ProjectReference Include="..\iSchool.FinanceCenter.Messeage\iSchool.FinanceCenter.Messeage.csproj" />
+    <ProjectReference Include="..\iSchool.Infrastructure\iSchool.Infrastructure.csproj" />
+    <ProjectReference Include="..\Sxb.PayCenter.Domain\Sxb.PayCenter.WechatPay.csproj" />
+  </ItemGroup>
+
+</Project>

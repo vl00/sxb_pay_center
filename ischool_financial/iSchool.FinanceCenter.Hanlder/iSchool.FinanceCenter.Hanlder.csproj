@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\iSchool.FinanceCenter.Appliaction\iSchool.FinanceCenter.Appliaction.csproj" />
+    <ProjectReference Include="..\iSchool.FinanceCenter.Messeage\iSchool.FinanceCenter.Messeage.csproj" />
+  </ItemGroup>
+
+</Project>

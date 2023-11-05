@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Makter\**" />
+    <EmbeddedResource Remove="Makter\**" />
+    <None Remove="Makter\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\iSchool.Domain\iSchool.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
